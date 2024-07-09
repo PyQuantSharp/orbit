@@ -14,13 +14,8 @@ def update_dict(original_dict, append_dict):
 
 
 def is_ordered_datetime(array):
-    """Returns True if array is ordered and non-repetitive
-    Use pandas .diff() method to take care of both tz and non-tz series consistently
-    By default pandas .diff() would generate a NaT for the first period
-    instead of skipping like np.diff. So dropna() to remove.
-    """
-    diff = array.to_series().diff().dropna().values
-    return np.all(diff.astype(float) > 0)
+    """Returns True if array is ordered and non-repetitive"""
+    return np.all(np.diff(array).astype(float) > 0)
 
 
 def is_even_gap_datetime(array):
