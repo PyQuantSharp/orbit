@@ -1,20 +1,26 @@
 name: Build and Test
 
-on:
-  workflow_run:
-    workflows: [Lint]
-    types: [completed]
+on: [push]
 
 jobs:
-  on_success:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: psf/black@stable
+        with:
+          options: "--check --verbose --color"
+          jupyter: true
+
+  unit_tests:
     # [macos-latest, macos-latest, windows-latest]
     runs-on: ubuntu-latest
+    needs: lint
     strategy:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
         python-version: [3.9]
-
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
