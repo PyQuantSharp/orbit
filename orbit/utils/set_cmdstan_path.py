@@ -1,22 +1,20 @@
 import json
+from pathlib import Path
 
 import cmdstanpy
-import importlib_resources
 from ..utils.logger import get_logger
 
 logger = get_logger("orbit")
 
+_ORBIT_DIR = Path(__file__).parent.parent
+
 
 def set_cmdstan_path():
-    with open(importlib_resources.files("orbit") / "config.json") as f:
+    with open(_ORBIT_DIR / "config.json") as f:
         config = json.load(f)
     CMDSTAN_VERSION = config["CMDSTAN_VERSION"]
 
-    local_cmdstan = (
-        importlib_resources.files("orbit")
-        / "stan_compiled"
-        / f"cmdstan-{CMDSTAN_VERSION}"
-    )
+    local_cmdstan = _ORBIT_DIR / "stan_compiled" / f"cmdstan-{CMDSTAN_VERSION}"
     if local_cmdstan.exists():
         cmdstanpy.set_cmdstan_path(str(local_cmdstan))
         logger.debug(
