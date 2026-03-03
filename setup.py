@@ -3,7 +3,6 @@ import os
 import platform
 import shutil
 import sys
-from pathlib import Path
 
 from setuptools import find_packages, setup
 from setuptools.command.build_py import build_py
@@ -122,14 +121,7 @@ class BuildPyCommand(build_py):
         build_py.run(self)
 
 
-about = {}
-here = Path(__file__).parent.resolve()
-with open(here / "orbit" / "__version__.py", "r") as f:
-    exec(f.read(), about)
-
-
 setup(
-    version=about["__version__"],
     packages=find_packages(),
     name="orbit-ml",
     description=DESCRIPTION,

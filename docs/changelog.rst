@@ -3,6 +3,90 @@
 Changelog
 =========
 
+1.1.5.0 (2026-03-02) (`release notes <https://github.com/uber/orbit/releases/tag/v1.1.5.0>`__)
+-------------------------------------------------------------------------------------------------
+:Core Changes:
+  - Drop ``pkg_resources`` dependency; use ``importlib.metadata`` / ``importlib_resources`` instead
+  - Fix defensive initialization of ``xlim`` / ``ylim`` in ``orbit.diagnostics.plot``
+  - Fix support for various array types in model fitting
+  - Update path-lib resolution for Stan model files
+  - Consolidate package version into a single source of truth in ``pyproject.toml``; ``__version__`` is now read via ``importlib.metadata``
+
+:CI/CD:
+  - Consolidate lint and unit-test GitHub Actions workflows (#875)
+  - Bump Jinja2 from 3.1.3 to 3.1.4 in docs (#868)
+
+:Documentation:
+  - Fix typo in regression_penalty tutorial (#884)
+
+1.1.4.9 (2024-03-31) (`release notes <https://github.com/uber/orbit/releases/tag/v1.1.4.9>`__)
+-------------------------------------------------------------------------------------------------
+:Core Changes:
+  - Revert requirements change that caused installation regressions
+  - Additional conda-environment fix (#867)
+
+1.1.4.8 (2024-03-28) (`release notes <https://github.com/uber/orbit/releases/tag/v1.1.4.8>`__)
+-------------------------------------------------------------------------------------------------
+:Core Changes:
+  - Drop support for Python ≤ 3.8
+  - Add conda-environment exception in setup to skip Stan compilation when running under conda (#866)
+  - Update requirements
+
+1.1.4.7 (2024-03-22) (`release notes <https://github.com/uber/orbit/releases/tag/v1.1.4.7>`__)
+-------------------------------------------------------------------------------------------------
+:Core Changes:
+  - Fix CmdStanPy version pinning and force-compile logic (#865)
+
+1.1.4.6 (2024-03-19) (`release notes <https://github.com/uber/orbit/releases/tag/v1.1.4.6>`__)
+-------------------------------------------------------------------------------------------------
+.. note:: v1.1.4.5 was an internal pre-release superseded by this version.
+
+:CI/CD:
+  - Update PyPI deploy workflow to build ``sdist`` (#862)
+  - Add retry for ``pip install .`` step in deploy workflow (#863)
+  - Remove redundant ``pip install`` step from deploy GitHub Action
+
+:Documentation:
+  - Update README
+
+1.1.4.4 (2024-03-13) (`release notes <https://github.com/uber/orbit/releases/tag/v1.1.4.4>`__)
+-------------------------------------------------------------------------------------------------
+.. note:: v1.1.4.4alpha was a pre-release superseded by this version.
+
+:Core Changes:
+  - Fix installation failure caused by pre-compile approach on Stan files
+
+:Documentation:
+  - Add ``Dockerfile`` for a quick-start environment ready for model fitting and forecasting
+  - Refresh documentation and notebooks for v1.1.4.4
+
+:CI/CD:
+  - Black lint fixes (#859)
+  - Fix ``isort`` linting
+
+1.1.4.3 (2024-02-15) (`release notes <https://github.com/uber/orbit/releases/tag/v1.1.4.3>`__)
+-------------------------------------------------------------------------------------------------
+:Core Changes:
+  - Fix Linux wheel deployment for platform-specific builds (#840, #841, #842, #843, #844)
+  - Update ``CMDSTAN_VERSION`` to 2.32.1 to resolve ``stan-dev/cmdstan#1158`` (#821)
+  - CmdStanPy integration improvements (#824)
+
+:Documentation:
+  - Documentation and dependency update (#833)
+  - Bump Jinja2 from 3.0.3 to 3.1.3 in docs (#828)
+
+1.1.4.2 (2023-01-29) (`release notes <https://github.com/uber/orbit/releases/tag/v1.1.4.2>`__)
+-------------------------------------------------------------------------------------------------
+:Core Changes:
+  - Maintenance version bump
+
+1.1.4.1 (2023-01-28) (`release notes <https://github.com/uber/orbit/releases/tag/v1.1.4.1>`__)
+-------------------------------------------------------------------------------------------------
+:Core Changes:
+  - Hot fix on package requirements
+  - Lint workflow update
+  - Reduce number of Python versions in unit-test matrix
+
 1.1.4 (2024-01-21) (`release notes <https://github.com/uber/orbit/releases/tag/v1.1.4>`__)
 -------------------------------------------------------------------------------------------------
 :Core Changes:
