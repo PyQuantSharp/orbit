@@ -11,8 +11,12 @@
 4. Update the version number in `orbit/__init__.py`. This version number will be propagated to `docs/conf.py`, `setup.cfg`, and `setup.py`.
 5. Commit changes
 6. Test PyPI deployment locally by running [Optional]
-    - `python3 setup.py sdist bdist_wheel`
+    - `python3 -m build`
     - `python3 -m twine check dist/*`
+    - `python3 -m twine upload --repository testpypi dist/*`
+    - Verify the package on https://test.pypi.org/project/orbit-ml/
+
+    > **Legacy (deprecated):** `python3 setup.py sdist bdist_wheel`
 7. If necessary, additional PRs may be merged to the release branch directly, but this should be for bug fixes only.
 8. Rebase and merge the release branch to `master` by running
     - `git checkout master`
